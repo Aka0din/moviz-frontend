@@ -14,7 +14,6 @@ function Home() {
     fetch('http://localhost:4000/movies')
       .then((res) => res.json())
       .then((data) => {
-        // .map()
         setMoviesList(data.movies);
       });
   }, []);
@@ -78,10 +77,10 @@ function Home() {
     return (
       <Movie
         title={movie.title}
-        poster={movie.poster}
-        voteAverage={movie.voteAverage}
-        voteCount={movie.voteCount}
-        overview={movie.overview}
+        poster={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+        voteAverage={movie.vote_average}
+        voteCount={movie.vote_count}
+        overview={movie.overview.substring(0, 250) + '...'}
         updateLikedMovies={updateLikedMovies}
         isLiked={likedMovies.includes(movie.title)}
         key={i}
